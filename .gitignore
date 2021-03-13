@@ -1,0 +1,7 @@
+# Xcode
+build/
+DerivedData/
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+**.xcconfig
