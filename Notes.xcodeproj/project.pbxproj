@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B24D858225FF321200734FC1 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D858125FF321200734FC1 /* NoteCell.swift */; };
 		B24D858B25FF376400734FC1 /* NotesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D858A25FF376400734FC1 /* NotesListPresenter.swift */; };
+		B24D859925FF3C8600734FC1 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D859825FF3C8600734FC1 /* Assembly.swift */; };
 		B2DFAF6925FCB8DE00B1E65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */; };
 		B2DFAF6B25FCB8DE00B1E65D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */; };
 		B2DFAF6D25FCB8DE00B1E65D /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6C25FCB8DE00B1E65D /* NotesListViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		B24D858125FF321200734FC1 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B24D858A25FF376400734FC1 /* NotesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListPresenter.swift; sourceTree = "<group>"; };
+		B24D859825FF3C8600734FC1 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		B2DFAF6525FCB8DE00B1E65D /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B24D859725FF3C5F00734FC1 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B24D859025FF377D00734FC1 /* NotesList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		B2DFAF5C25FCB8DE00B1E65D = {
 			isa = PBXGroup;
 			children = (
@@ -104,7 +114,8 @@
 			children = (
 				B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */,
 				B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */,
-				B24D859025FF377D00734FC1 /* NotesList */,
+				B24D859825FF3C8600734FC1 /* Assembly.swift */,
+				B24D859725FF3C5F00734FC1 /* Modules */,
 				B2DFAF6E25FCB8DE00B1E65D /* Main.storyboard */,
 				B2DFAF7125FCB8E000B1E65D /* Assets.xcassets */,
 				B2DFAF7325FCB8E000B1E65D /* LaunchScreen.storyboard */,
@@ -184,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2DFAF6D25FCB8DE00B1E65D /* NotesListViewController.swift in Sources */,
+				B24D859925FF3C8600734FC1 /* Assembly.swift in Sources */,
 				B2DFAF6925FCB8DE00B1E65D /* AppDelegate.swift in Sources */,
 				B24D858B25FF376400734FC1 /* NotesListPresenter.swift in Sources */,
 				B2DFAF6B25FCB8DE00B1E65D /* SceneDelegate.swift in Sources */,

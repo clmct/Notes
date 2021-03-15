@@ -15,6 +15,8 @@ final class NotesListViewController: UIViewController {
     
     return tableView
   }()
+  
+  var presenter: NotesListPresenterProtocol?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,8 +25,6 @@ final class NotesListViewController: UIViewController {
     tableView.dataSource = self
     tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.identifire)
   }
-
-
   
   func setupLayout() {
     self.view.addSubview(tableView)
@@ -45,13 +45,10 @@ extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
     guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.identifire, for: indexPath) as? NoteCell else {
       return UITableViewCell()
     }
-    
     return cell
   }
-  
   
 }

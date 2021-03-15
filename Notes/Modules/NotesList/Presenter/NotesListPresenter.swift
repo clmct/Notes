@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class NotesListPresenter {
+protocol NotesListPresenterProtocol {
+  
+}
+
+final class NotesListPresenter: NotesListPresenterProtocol {
   
   weak var viewController: NotesListViewController?
   
