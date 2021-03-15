@@ -5,18 +5,24 @@
 //  Created by Алмат Кульбаев on 15.03.2021.
 //
 
-import UIKit
+import Foundation
 
 protocol NotesListPresenterProtocol {
-  
+  func showNoteEditor()
 }
 
 final class NotesListPresenter: NotesListPresenterProtocol {
   
   weak var viewController: NotesListViewController?
+  var router: MainRouterProtocol
   
-  init(viewController: NotesListViewController) {
+  init(viewController: NotesListViewController, router: MainRouterProtocol) {
     self.viewController = viewController
+    self.router = router
+  }
+  
+  func showNoteEditor() {
+    router.showNoteEditor()
   }
   
 }

@@ -14,10 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     
-    let assembly: AssemblyProtocol = Assembly()
-    
+    let navigationController = UINavigationController()
+    let assembly: AssemblyProtocol = Assembly(navigationController: navigationController)
+    let router = MainRouter(assembly: assembly, navigationController: navigationController)
     let window = UIWindow(windowScene: scene)
-    window.rootViewController = assembly.createNotesListModule()
+    router.initialViewController()
+    window.rootViewController = navigationController
     window.makeKeyAndVisible()
     self.window = window
   }
