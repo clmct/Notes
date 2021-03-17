@@ -21,7 +21,7 @@ final class NotesListViewController: UIViewController {
     let entity = NoteModel.entity()
     fetchRequest.entity = entity
     
-    let sort1 = NSSortDescriptor(key: "date", ascending: true)
+    let sort1 = NSSortDescriptor(key: "date", ascending: false)
     fetchRequest.sortDescriptors = [sort1]
     
     let fetchedResultsController = NSFetchedResultsController(

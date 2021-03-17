@@ -25,7 +25,7 @@ final class NotesListPresenter: NotesListPresenterProtocol {
     self.router = router
     self.coreData = coreData
     
-    let note = Note(text: "3", identifire: UUID().uuidString, date: Date.init())
+    let note = Note(text: "tu", identifire: UUID().uuidString, date: Date.init())
     let test = NoteModel(model: note, context: coreData.context)
     coreData.saveContext()
   }
