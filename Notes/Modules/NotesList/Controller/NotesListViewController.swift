@@ -12,18 +12,24 @@ final class NotesListViewController: UIViewController {
   var tableView: UITableView = {
     let tableView = UITableView(frame: CGRect.zero, style: .plain)
     tableView.translatesAutoresizingMaskIntoConstraints = false
-    
     return tableView
   }()
   
   var presenter: NotesListPresenterProtocol?
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.title = "Notes"
     setupLayout()
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.identifire)
+    setupButton()
+  }
+  
+  func setupButton() {
+    let createNote = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: nil)
+    self.navigationItem.rightBarButtonItem = createNote
   }
   
   func setupLayout() {
@@ -35,9 +41,7 @@ final class NotesListViewController: UIViewController {
       tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
     ])
   }
-  
 }
-
 
 extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,5 +58,4 @@ extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     presenter?.showNoteEditor()
   }
-  
 }

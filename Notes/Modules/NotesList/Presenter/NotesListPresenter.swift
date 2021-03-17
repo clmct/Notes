@@ -15,6 +15,7 @@ final class NotesListPresenter: NotesListPresenterProtocol {
   
   weak var viewController: NotesListViewController?
   var router: MainRouterProtocol
+  var notes = [Note]()
   
   init(viewController: NotesListViewController, router: MainRouterProtocol) {
     self.viewController = viewController
