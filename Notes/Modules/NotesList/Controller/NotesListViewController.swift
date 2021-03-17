@@ -109,8 +109,8 @@ extension NotesListViewController: NSFetchedResultsControllerDelegate {
     case .update:
       guard let indexPath = indexPath else { return }
       if let cell = tableView.cellForRow(at: indexPath) as? NoteCell {
-        guard let channel = controller.object(at: indexPath) as? NoteModel else { return }
-        //        cell.configure(with: channel)
+        guard let note = controller.object(at: indexPath) as? NoteModel else { return }
+        cell.configure(with: note)
       }
       tableView.reloadRows(at: [indexPath], with: .automatic)
     case .delete:
@@ -131,7 +131,7 @@ extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
       presenter?.getContext().delete(note)
       do {
         try presenter?.getContext().save()
-      } catch {4
+      } catch {
       }
     }
   }
@@ -143,10 +143,13 @@ extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.identifire, for: indexPath) as? NoteCell else {
       return UITableViewCell()
     }
+    let note = fetchedResultsController.object(at: indexPath)
+    cell.configure(with: note)
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    presenter?.showNoteEditor()
+    guard let identifire = fetchedResultsController.object(at: indexPath).identifire else { return }
+      presenter?.showNoteEditor(identifire: identifire)
   }
 }

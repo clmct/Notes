@@ -7,7 +7,13 @@
 
 import UIKit
 
-final class NoteCell: UITableViewCell {
+final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
+  func configure(with model: ConversationModel) {
+    self.titleLabel.text = model.text
+    self.descriptionLabel.text = model.identifire
+  }
+  
+  typealias ConversationModel = NoteModel
   
   static var identifire = "NoteCell"
   

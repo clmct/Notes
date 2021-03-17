@@ -7,6 +7,12 @@
 
 import UIKit
 
+extension NoteEditorViewController: NoteEditorViewControllerDelegate {
+  func setData(model: NoteModel) {
+    self.textView.text = model.text
+  }
+}
+
 final class NoteEditorViewController: UIViewController {
 
   var presenter: NoteEditorPresenterProtocol?
@@ -19,6 +25,7 @@ final class NoteEditorViewController: UIViewController {
     self.title = "Note"
     self.setupBackground()
     self.setupTextKitStack()
+    presenter?.fetchData()
   }
   
   override var canBecomeFirstResponder: Bool {
@@ -27,6 +34,11 @@ final class NoteEditorViewController: UIViewController {
 
   override var inputAccessoryView: UIView? {
     return InputAccessoryView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+  }
+  
+  deinit {
+    let note = Note(text: textView.text, identifire: "UUID().uuidString", date: Date.init())
+    presenter?.addNote(with: note)
   }
 
 }

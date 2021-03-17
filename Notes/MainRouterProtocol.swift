@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainRouterProtocol {
   func initialViewController()
-  func showNoteEditor()
+  func showNoteEditor(identifire: String)
 }
 
 final class MainRouter: MainRouterProtocol {
@@ -27,8 +27,8 @@ final class MainRouter: MainRouterProtocol {
     navigationController.viewControllers = [viewController]
   }
   
-  func showNoteEditor() {
-    let viewController = assembly.createNoteEditorModule()
+  func showNoteEditor(identifire: String) {
+    let viewController = assembly.createNoteEditorModule(identifire: identifire)
     navigationController.pushViewController(viewController, animated: true)
   }
   

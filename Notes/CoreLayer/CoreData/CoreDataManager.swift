@@ -31,9 +31,9 @@ final class CoreDataManager: CoreDataManagerProtocol {
             do {
                 try context.save()
             } catch {
-              context.rollback()
+//              context.rollback()
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }

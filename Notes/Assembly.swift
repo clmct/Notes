@@ -9,7 +9,7 @@ import UIKit
 
 protocol AssemblyProtocol {
   func createNotesListModule(router: MainRouterProtocol) -> UIViewController
-  func createNoteEditorModule() -> UIViewController
+  func createNoteEditorModule(identifire: String) -> UIViewController
 }
 
 final class Assembly: AssemblyProtocol {
@@ -23,15 +23,14 @@ final class Assembly: AssemblyProtocol {
   
   func createNotesListModule(router: MainRouterProtocol) -> UIViewController {
     let viewController = NotesListViewController()
-    let coreData = coreDataManager
-    let presenter = NotesListPresenter(viewController: viewController, router: router, coreData: coreData)
+    let presenter = NotesListPresenter(viewController: viewController, router: router, coreData: coreDataManager)
     viewController.presenter = presenter
     return viewController
   }
   
-  func createNoteEditorModule() -> UIViewController {
+  func createNoteEditorModule(identifire: String) -> UIViewController {
     let viewController = NoteEditorViewController()
-    let presenter = NoteEditorPresenter(viewController: viewController)
+    let presenter = NoteEditorPresenter(viewController: viewController, coreData: coreDataManager, identifire: identifire)
     viewController.presenter = presenter
     return viewController
   }
