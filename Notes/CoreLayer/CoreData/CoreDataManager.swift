@@ -14,6 +14,10 @@ protocol CoreDataManagerProtocol {
 
 final class CoreDataManager: CoreDataManagerProtocol {
   
+  init() {
+    self.context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+  }
+  
   lazy var persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: "CoreDataModel")
     container.loadPersistentStores { (storeDescription, error) in
