@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 final class NotesListViewController: UIViewController {
   
@@ -13,6 +14,24 @@ final class NotesListViewController: UIViewController {
     let tableView = UITableView(frame: CGRect.zero, style: .plain)
     tableView.translatesAutoresizingMaskIntoConstraints = false
     return tableView
+  }()
+  
+  lazy var fetchedResultsController: NSFetchedResultsController<NoteModel> = {
+    let fetchRequest = NSFetchRequest<NoteModel>()
+    let entity = NoteModel.entity()
+    fetchRequest.entity = entity
+    
+    let sort1 = NSSortDescriptor(key: "date", ascending: true)
+    fetchRequest.sortDescriptors = [sort1]
+    
+    let fetchedResultsController = NSFetchedResultsController(
+              fetchRequest: fetchRequest,
+      managedObjectContext: self.presenter!.getContext(),
+        sectionNameKeyPath: nil,
+      cacheName: nil)
+    
+    fetchedResultsController.delegate = self
+    return fetchedResultsController
   }()
   
   var presenter: NotesListPresenterProtocol?
@@ -25,11 +44,27 @@ final class NotesListViewController: UIViewController {
     tableView.dataSource = self
     tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.identifire)
     setupButton()
+    performFetch()
+  }
+  
+  func performFetch() {
+    do {
+      try
+      fetchedResultsController.performFetch()
+        tableView.reloadData()
+    } catch {
+      fatalError()
+    }
   }
   
   func setupButton() {
-    let createNote = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: nil)
+    let createNote = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(createNoteAction))
     self.navigationItem.rightBarButtonItem = createNote
+  }
+  
+  
+  @objc func createNoteAction() {
+    tableView.reloadData()
   }
   
   func setupLayout() {
@@ -43,9 +78,65 @@ final class NotesListViewController: UIViewController {
   }
 }
 
+
+extension NotesListViewController: NSFetchedResultsControllerDelegate {
+  
+  
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    print("\(#function)")
+    self.tableView.beginUpdates()
+  }
+  
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    print("\(#function)")
+    self.tableView.endUpdates()
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                  didChange anObject: Any,
+                  at indexPath: IndexPath?,
+                  for type: NSFetchedResultsChangeType,
+                  newIndexPath: IndexPath?) {
+    
+    switch type {
+    case .insert:
+      guard let newIndexPath = newIndexPath else { return }
+      tableView.insertRows(at: [newIndexPath], with: .automatic)
+    case .move:
+      guard let newIndexPath = newIndexPath, let indexPath = indexPath else { return }
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      tableView.insertRows(at: [newIndexPath], with: .automatic)
+    case .update:
+      guard let indexPath = indexPath else { return }
+      if let cell = tableView.cellForRow(at: indexPath) as? NoteCell {
+        guard let channel = controller.object(at: indexPath) as? NoteModel else { return }
+        //        cell.configure(with: channel)
+      }
+      tableView.reloadRows(at: [indexPath], with: .automatic)
+    case .delete:
+      guard let indexPath = indexPath else { return }
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    default:
+      print("switch type is defuailt")
+    }
+  }
+}
+
+
 extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      let note = fetchedResultsController.object(at: indexPath)
+      presenter?.getContext().delete(note)
+      do {
+        try presenter?.getContext().save()
+      } catch {4
+      }
+    }
+  }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    10
+    fetchedResultsController.fetchedObjects?.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

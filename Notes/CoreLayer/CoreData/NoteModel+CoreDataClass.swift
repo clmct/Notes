@@ -1,14 +1,15 @@
 //
-//  Note.swift
+//  NoteModel+CoreDataClass.swift
 //  Notes
 //
 //  Created by Алмат Кульбаев on 17.03.2021.
 //
+//
 
 import Foundation
+import CoreData
 
-struct Note {
-  let text: String
-  let identifire: String
-  let date: Date
+
+public class NoteModel: NSManagedObject {
+
 }

@@ -15,6 +15,7 @@ protocol AssemblyProtocol {
 final class Assembly: AssemblyProtocol {
   
   var navigationController: UINavigationController
+  var coreDataManager = CoreDataManager()
   
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
@@ -22,7 +23,8 @@ final class Assembly: AssemblyProtocol {
   
   func createNotesListModule(router: MainRouterProtocol) -> UIViewController {
     let viewController = NotesListViewController()
-    let presenter = NotesListPresenter(viewController: viewController, router: router)
+    let coreData = coreDataManager
+    let presenter = NotesListPresenter(viewController: viewController, router: router, coreData: coreData)
     viewController.presenter = presenter
     return viewController
   }

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		B21153BE260233B300B4F8D4 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21153BD260233B300B4F8D4 /* Note.swift */; };
 		B21153D8260249AE00B4F8D4 /* InputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21153D7260249AE00B4F8D4 /* InputAccessoryView.swift */; };
+		B21153F3260268A000B4F8D4 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B21153F1260268A000B4F8D4 /* CoreDataModel.xcdatamodeld */; };
+		B211540D2602783300B4F8D4 /* NoteModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211540C2602783300B4F8D4 /* NoteModel+CoreDataClass.swift */; };
+		B21154112602784000B4F8D4 /* NoteModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */; };
+		B21154162602786E00B4F8D4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21154152602786E00B4F8D4 /* CoreDataManager.swift */; };
+		B211541A2602888300B4F8D4 /* NoteModel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21154192602888300B4F8D4 /* NoteModel+Init.swift */; };
 		B24D858225FF321200734FC1 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D858125FF321200734FC1 /* NoteCell.swift */; };
 		B24D858B25FF376400734FC1 /* NotesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D858A25FF376400734FC1 /* NotesListPresenter.swift */; };
 		B24D859925FF3C8600734FC1 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D859825FF3C8600734FC1 /* Assembly.swift */; };
@@ -26,6 +31,11 @@
 /* Begin PBXFileReference section */
 		B21153BD260233B300B4F8D4 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		B21153D7260249AE00B4F8D4 /* InputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAccessoryView.swift; sourceTree = "<group>"; };
+		B21153F2260268A000B4F8D4 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		B211540C2602783300B4F8D4 /* NoteModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B21154152602786E00B4F8D4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		B21154192602888300B4F8D4 /* NoteModel+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteModel+Init.swift"; sourceTree = "<group>"; };
 		B24D858125FF321200734FC1 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B24D858A25FF376400734FC1 /* NotesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListPresenter.swift; sourceTree = "<group>"; };
 		B24D859825FF3C8600734FC1 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
@@ -59,6 +69,25 @@
 				B21153BD260233B300B4F8D4 /* Note.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		B211540A2602780100B4F8D4 /* CoreLayer */ = {
+			isa = PBXGroup;
+			children = (
+				B211540B2602780E00B4F8D4 /* CoreData */,
+			);
+			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		B211540B2602780E00B4F8D4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B211540C2602783300B4F8D4 /* NoteModel+CoreDataClass.swift */,
+				B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */,
+				B21154192602888300B4F8D4 /* NoteModel+Init.swift */,
+				B21154152602786E00B4F8D4 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		B24D858525FF373A00734FC1 /* Controller */ = {
@@ -156,10 +185,12 @@
 		B2DFAF6725FCB8DE00B1E65D /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				B211540A2602780100B4F8D4 /* CoreLayer */,
+				B24D85AA25FF417100734FC1 /* MainRouterProtocol.swift */,
 				B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */,
 				B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */,
 				B24D859825FF3C8600734FC1 /* Assembly.swift */,
-				B24D85AA25FF417100734FC1 /* MainRouterProtocol.swift */,
+				B21153F1260268A000B4F8D4 /* CoreDataModel.xcdatamodeld */,
 				B21153D7260249AE00B4F8D4 /* InputAccessoryView.swift */,
 				B24D859725FF3C5F00734FC1 /* Modules */,
 				B21153C2260233EE00B4F8D4 /* Entities */,
@@ -241,14 +272,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B21154162602786E00B4F8D4 /* CoreDataManager.swift in Sources */,
 				B21153BE260233B300B4F8D4 /* Note.swift in Sources */,
 				B2DFAF6D25FCB8DE00B1E65D /* NotesListViewController.swift in Sources */,
+				B211540D2602783300B4F8D4 /* NoteModel+CoreDataClass.swift in Sources */,
+				B21153F3260268A000B4F8D4 /* CoreDataModel.xcdatamodeld in Sources */,
+				B211541A2602888300B4F8D4 /* NoteModel+Init.swift in Sources */,
 				B24D85A325FF3FCC00734FC1 /* NoteEditorPresenter.swift in Sources */,
 				B24D85AB25FF417100734FC1 /* MainRouterProtocol.swift in Sources */,
 				B24D85A025FF3FBE00734FC1 /* NoteEditorViewController.swift in Sources */,
 				B24D859925FF3C8600734FC1 /* Assembly.swift in Sources */,
 				B2DFAF6925FCB8DE00B1E65D /* AppDelegate.swift in Sources */,
 				B24D858B25FF376400734FC1 /* NotesListPresenter.swift in Sources */,
+				B21154112602784000B4F8D4 /* NoteModel+CoreDataProperties.swift in Sources */,
 				B2DFAF6B25FCB8DE00B1E65D /* SceneDelegate.swift in Sources */,
 				B21153D8260249AE00B4F8D4 /* InputAccessoryView.swift in Sources */,
 				B24D858225FF321200734FC1 /* NoteCell.swift in Sources */,
@@ -455,6 +491,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B21153F1260268A000B4F8D4 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B21153F2260268A000B4F8D4 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = B21153F2260268A000B4F8D4 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B2DFAF5D25FCB8DE00B1E65D /* Project object */;
 }
