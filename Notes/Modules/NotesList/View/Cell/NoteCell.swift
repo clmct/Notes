@@ -9,8 +9,13 @@ import UIKit
 
 final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
   func configure(with model: ConversationModel) {
-    self.titleLabel.text = model.text
-    self.descriptionLabel.text = model.identifire
+    
+    let textComponents = model.text?.components(separatedBy: "\n")
+    let titleComponent: String = textComponents?[0] ?? ""
+    let descriptionComponent: String = textComponents?.count =>2 ?  "  " :  textComponents?[1]
+    
+    self.titleLabel.text = titleComponent
+    self.descriptionLabel.text = descriptionComponent
     
     if let date = model.date {
       
@@ -24,12 +29,12 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
       formatter.dateFormat = "MM.dd.yyyy HH:mm"
       let dateString = formatter.string(from: date)
       
-      let dateComponent =  dateString.split(separator: " ")
+      let dateComponents =  dateString.split(separator: " ")
       
-      if todayString == dateComponent[0] {
-        self.dateLabel.text = String(dateComponent[1])
+      if todayString == dateComponents[0] {
+        self.dateLabel.text = String(dateComponents[1])
       } else {
-        self.dateLabel.text = String(dateComponent[0])
+        self.dateLabel.text = String(dateComponents[0])
       }
       
     }
@@ -61,7 +66,6 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
   lazy var dateLabel: UILabel = {
     let date = UILabel()
     date.translatesAutoresizingMaskIntoConstraints = false
-    date.text = "12:23"
     date.numberOfLines = 1
     date.font = .systemFont(ofSize: 16)
     date.textColor = .lightGray
@@ -93,7 +97,6 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
     
     NSLayoutConstraint.activate([
       dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-//      dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
       dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
       dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
     ])

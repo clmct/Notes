@@ -14,6 +14,8 @@ extension NoteEditorViewController: NoteEditorViewControllerDelegate {
   }
 }
 
+typealias AttributeCompletion = (AnyObject?) -> ()
+
 final class NoteEditorViewController: UIViewController {
 
   var presenter: NoteEditorPresenterProtocol?
@@ -23,6 +25,7 @@ final class NoteEditorViewController: UIViewController {
   var note: NoteModel!
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = .systemBackground
     self.title = "Note"
     self.setupBackground()
     self.setupTextKitStack()
@@ -32,14 +35,16 @@ final class NoteEditorViewController: UIViewController {
   override var canBecomeFirstResponder: Bool {
     return true
   }
-
+  
   override var inputAccessoryView: UIView? {
-    return InputAccessoryView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+    let view = InputAccessoryView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+    view.completionButtonKeyboard = { [unowned self] in
+      self.textView.resignFirstResponder()
+    }
+    return view
   }
   
   deinit {
-//    let notee = Note(text: textView.text, identifire: !, date: Date.init())
-//    presenter?.addNote(with: notee)
     presenter?.update(with: self.textView.text)
   }
 
@@ -90,9 +95,9 @@ private extension NoteEditorViewController {
   }
   
   func setupDefaultState() {
-//    let text = "For a minute or two she stood looking at the house, and wondering what to do next, when suddenly a footma..."
-//    let attributedString = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20.0)])
-//    textStorage.setAttributedString(attributedString)
+    let text = "e"
+    let attributedString = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20.0)])
+    textStorage.setAttributedString(attributedString)
   }
   
   func setupBackground() {
@@ -100,29 +105,29 @@ private extension NoteEditorViewController {
     background.translatesAutoresizingMaskIntoConstraints = false
     background.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
     view.addSubview(background)
-    
+
     NSLayoutConstraint.activate([
       background.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       background.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      background.topAnchor.constraint(equalTo: view.topAnchor),
+      background.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
       background.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
-    
-//  @objc func boldAction() {
-//    textStorage.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: textView.selectedRange )
-//  }
-//  @objc func italicAction() {
-//    textStorage.addAttribute(.font, value: UIFont.italicSystemFont(ofSize: 20), range: textView.selectedRange )
-//  }
-//  @objc func highlighterAction() {
-//
-//  }
-//  @objc func clearAction() {
-//    textStorage.addAttribute(.font, value: UIFont.italicSystemFont(ofSize: 20), range: textView.selectedRange )
-//  }
-//  @IBAction func doneAction() {
-//      resignFirstResponder()
-//    self.view.endEditing(true)
+  
+  }
+  
+  typealias AttributeCompletion = (AnyObject?) -> ()
+  
+  func onComplete(_ attribute: String) -> (AttributeCompletion) {
+      let range = NSMakeRange(0, textStorage.length)
+      
+      func fnValue (_ value: AnyObject?) {
+          if let attributeValue: AnyObject = value {
+            textStorage.addAttribute(NSAttributedString.Key(rawValue: attribute), value: attributeValue, range:range)
+          } else {
+            textStorage.removeAttribute(NSAttributedString.Key(rawValue: attribute), range: range)
+          }
+      }
+      return fnValue;
   }
   
 }

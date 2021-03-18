@@ -23,7 +23,7 @@ final class CoreDataManager: CoreDataManagerProtocol {
     let container = NSPersistentContainer(name: "CoreDataModel")
     container.loadPersistentStores { (storeDescription, error) in
       if let error = error {
-        fatalError("Could not load data store: \(error)")
+        print(error.localizedDescription)
       }
     }
     return container

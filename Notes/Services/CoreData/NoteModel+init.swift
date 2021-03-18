@@ -1,5 +1,5 @@
 //
-//  NoteModel+Init.swift
+//  NoteModel+init.swift
 //  Notes
 //
 //  Created by Алмат Кульбаев on 18.03.2021.

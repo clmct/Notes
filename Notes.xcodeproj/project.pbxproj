@@ -13,7 +13,7 @@
 		B211540D2602783300B4F8D4 /* NoteModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211540C2602783300B4F8D4 /* NoteModel+CoreDataClass.swift */; };
 		B21154112602784000B4F8D4 /* NoteModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */; };
 		B21154162602786E00B4F8D4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21154152602786E00B4F8D4 /* CoreDataManager.swift */; };
-		B211541A2602888300B4F8D4 /* NoteModel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21154192602888300B4F8D4 /* NoteModel+Init.swift */; };
+		B211541A2602888300B4F8D4 /* NoteModel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21154192602888300B4F8D4 /* NoteModel+init.swift */; };
 		B211542326028C3C00B4F8D4 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211542226028C3C00B4F8D4 /* ConfigurableCell.swift */; };
 		B24D858225FF321200734FC1 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D858125FF321200734FC1 /* NoteCell.swift */; };
 		B24D858B25FF376400734FC1 /* NotesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D858A25FF376400734FC1 /* NotesListPresenter.swift */; };
@@ -21,7 +21,7 @@
 		B24D85A025FF3FBE00734FC1 /* NoteEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D859F25FF3FBE00734FC1 /* NoteEditorViewController.swift */; };
 		B24D85A325FF3FCC00734FC1 /* NoteEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D85A225FF3FCC00734FC1 /* NoteEditorPresenter.swift */; };
 		B24D85AB25FF417100734FC1 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D85AA25FF417100734FC1 /* MainRouterProtocol.swift */; };
-		B2A2F95526038038004A51F7 /* UITableView + deselectSelectedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A2F95426038038004A51F7 /* UITableView + deselectSelectedRow.swift */; };
+		B2A2F95526038038004A51F7 /* UITableView+deselectSelectedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A2F95426038038004A51F7 /* UITableView+deselectSelectedRow.swift */; };
 		B2DFAF6925FCB8DE00B1E65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */; };
 		B2DFAF6B25FCB8DE00B1E65D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */; };
 		B2DFAF6D25FCB8DE00B1E65D /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6C25FCB8DE00B1E65D /* NotesListViewController.swift */; };
@@ -37,7 +37,7 @@
 		B211540C2602783300B4F8D4 /* NoteModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B21154152602786E00B4F8D4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		B21154192602888300B4F8D4 /* NoteModel+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteModel+Init.swift"; sourceTree = "<group>"; };
+		B21154192602888300B4F8D4 /* NoteModel+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteModel+init.swift"; sourceTree = "<group>"; };
 		B211542226028C3C00B4F8D4 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		B24D858125FF321200734FC1 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B24D858A25FF376400734FC1 /* NotesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListPresenter.swift; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		B24D859F25FF3FBE00734FC1 /* NoteEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorViewController.swift; sourceTree = "<group>"; };
 		B24D85A225FF3FCC00734FC1 /* NoteEditorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorPresenter.swift; sourceTree = "<group>"; };
 		B24D85AA25FF417100734FC1 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
-		B2A2F95426038038004A51F7 /* UITableView + deselectSelectedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + deselectSelectedRow.swift"; sourceTree = "<group>"; };
+		B2A2F95426038038004A51F7 /* UITableView+deselectSelectedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+deselectSelectedRow.swift"; sourceTree = "<group>"; };
 		B2DFAF6525FCB8DE00B1E65D /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,12 +75,12 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		B211540A2602780100B4F8D4 /* CoreLayer */ = {
+		B211540A2602780100B4F8D4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				B211540B2602780E00B4F8D4 /* CoreData */,
 			);
-			path = CoreLayer;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B211540B2602780E00B4F8D4 /* CoreData */ = {
@@ -88,7 +88,7 @@
 			children = (
 				B211540C2602783300B4F8D4 /* NoteModel+CoreDataClass.swift */,
 				B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */,
-				B21154192602888300B4F8D4 /* NoteModel+Init.swift */,
+				B21154192602888300B4F8D4 /* NoteModel+init.swift */,
 				B21154152602786E00B4F8D4 /* CoreDataManager.swift */,
 				B21153F1260268A000B4F8D4 /* CoreDataModel.xcdatamodeld */,
 			);
@@ -149,8 +149,9 @@
 		B24D859D25FF3F3D00734FC1 /* NoteEditor */ = {
 			isa = PBXGroup;
 			children = (
-				B24D85A525FF3FD400734FC1 /* Controller */,
 				B24D85A725FF3FD900734FC1 /* Presenter */,
+				B24D85A525FF3FD400734FC1 /* Controller */,
+				B2A2F959260384CC004A51F7 /* View */,
 			);
 			path = NoteEditor;
 			sourceTree = "<group>";
@@ -169,6 +170,14 @@
 				B24D85A225FF3FCC00734FC1 /* NoteEditorPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B2A2F959260384CC004A51F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B21153D7260249AE00B4F8D4 /* InputAccessoryView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B2DFAF5C25FCB8DE00B1E65D = {
@@ -190,20 +199,19 @@
 		B2DFAF6725FCB8DE00B1E65D /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				B211540A2602780100B4F8D4 /* CoreLayer */,
 				B24D85AA25FF417100734FC1 /* MainRouterProtocol.swift */,
 				B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */,
 				B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */,
 				B24D859825FF3C8600734FC1 /* Assembly.swift */,
-				B21153D7260249AE00B4F8D4 /* InputAccessoryView.swift */,
 				B24D859725FF3C5F00734FC1 /* Modules */,
+				B211540A2602780100B4F8D4 /* Services */,
 				B21153C2260233EE00B4F8D4 /* Entities */,
 				B2DFAF6E25FCB8DE00B1E65D /* Main.storyboard */,
 				B2DFAF7125FCB8E000B1E65D /* Assets.xcassets */,
 				B2DFAF7325FCB8E000B1E65D /* LaunchScreen.storyboard */,
 				B2DFAF7625FCB8E000B1E65D /* Info.plist */,
 				B211542226028C3C00B4F8D4 /* ConfigurableCell.swift */,
-				B2A2F95426038038004A51F7 /* UITableView + deselectSelectedRow.swift */,
+				B2A2F95426038038004A51F7 /* UITableView+deselectSelectedRow.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -283,14 +291,14 @@
 				B2DFAF6D25FCB8DE00B1E65D /* NotesListViewController.swift in Sources */,
 				B211540D2602783300B4F8D4 /* NoteModel+CoreDataClass.swift in Sources */,
 				B21153F3260268A000B4F8D4 /* CoreDataModel.xcdatamodeld in Sources */,
-				B211541A2602888300B4F8D4 /* NoteModel+Init.swift in Sources */,
+				B211541A2602888300B4F8D4 /* NoteModel+init.swift in Sources */,
 				B24D85A325FF3FCC00734FC1 /* NoteEditorPresenter.swift in Sources */,
 				B211542326028C3C00B4F8D4 /* ConfigurableCell.swift in Sources */,
 				B24D85AB25FF417100734FC1 /* MainRouterProtocol.swift in Sources */,
 				B24D85A025FF3FBE00734FC1 /* NoteEditorViewController.swift in Sources */,
 				B24D859925FF3C8600734FC1 /* Assembly.swift in Sources */,
 				B2DFAF6925FCB8DE00B1E65D /* AppDelegate.swift in Sources */,
-				B2A2F95526038038004A51F7 /* UITableView + deselectSelectedRow.swift in Sources */,
+				B2A2F95526038038004A51F7 /* UITableView+deselectSelectedRow.swift in Sources */,
 				B24D858B25FF376400734FC1 /* NotesListPresenter.swift in Sources */,
 				B21154112602784000B4F8D4 /* NoteModel+CoreDataProperties.swift in Sources */,
 				B2DFAF6B25FCB8DE00B1E65D /* SceneDelegate.swift in Sources */,

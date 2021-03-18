@@ -45,6 +45,7 @@ final class NotesListViewController: UIViewController {
     tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.identifire)
     setupButton()
     performFetch()
+    
   }
   
   override func viewWillAppear(_ animated: Bool)

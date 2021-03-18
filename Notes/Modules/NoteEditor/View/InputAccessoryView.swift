@@ -10,13 +10,13 @@ import UIKit
 class InputAccessoryView: UIView {
   
   public var toolbar: UIToolbar!
-  
+  var completionButtonKeyboard: (() -> ())?
+  var completion: AttributeCompletion?
   override func didMoveToWindow() {
     super.didMoveToWindow()
-    if #available(iOS 11.0, *) {
-      if let window = self.window {
-        self.bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: window.safeAreaLayoutGuide.bottomAnchor, multiplier: 1.0).isActive = true
-      }
+    if let window = self.window {
+      self.bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: window.safeAreaLayoutGuide.bottomAnchor,
+                                   multiplier: 1.0).isActive = true
     }
   }
   
@@ -24,19 +24,15 @@ class InputAccessoryView: UIView {
     super.init(frame: frame)
     setupLayout()
     setButtons()
-
-
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
 }
 
 
 extension InputAccessoryView {
-  // setupLayout
   func setupLayout() {
     toolbar = UIToolbar(frame: frame)
     self.addSubview(toolbar)
@@ -65,6 +61,7 @@ extension InputAccessoryView {
   // Actions
   @objc func boldAction() {
 //    textStorage.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: textView.selectedRange )
+//    completion
   }
   @objc func italicAction() {
 //    textStorage.addAttribute(.font, value: UIFont.italicSystemFont(ofSize: 20), range: textView.selectedRange )
@@ -76,7 +73,8 @@ extension InputAccessoryView {
 //    textStorage.addAttribute(.font, value: UIFont.italicSystemFont(ofSize: 20), range: textView.selectedRange )
   }
   @IBAction func doneAction() {
-      resignFirstResponder()
+    self.completionButtonKeyboard!()
+//    self.textView.resignFirstResponder()
 //    self.view.endEditing(true)
   }
 }
