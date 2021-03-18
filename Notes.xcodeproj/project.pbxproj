@@ -21,6 +21,7 @@
 		B24D85A025FF3FBE00734FC1 /* NoteEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D859F25FF3FBE00734FC1 /* NoteEditorViewController.swift */; };
 		B24D85A325FF3FCC00734FC1 /* NoteEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D85A225FF3FCC00734FC1 /* NoteEditorPresenter.swift */; };
 		B24D85AB25FF417100734FC1 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D85AA25FF417100734FC1 /* MainRouterProtocol.swift */; };
+		B2A2F95526038038004A51F7 /* UITableView + deselectSelectedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A2F95426038038004A51F7 /* UITableView + deselectSelectedRow.swift */; };
 		B2DFAF6925FCB8DE00B1E65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */; };
 		B2DFAF6B25FCB8DE00B1E65D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */; };
 		B2DFAF6D25FCB8DE00B1E65D /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6C25FCB8DE00B1E65D /* NotesListViewController.swift */; };
@@ -44,6 +45,7 @@
 		B24D859F25FF3FBE00734FC1 /* NoteEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorViewController.swift; sourceTree = "<group>"; };
 		B24D85A225FF3FCC00734FC1 /* NoteEditorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorPresenter.swift; sourceTree = "<group>"; };
 		B24D85AA25FF417100734FC1 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
+		B2A2F95426038038004A51F7 /* UITableView + deselectSelectedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + deselectSelectedRow.swift"; sourceTree = "<group>"; };
 		B2DFAF6525FCB8DE00B1E65D /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */,
 				B21154192602888300B4F8D4 /* NoteModel+Init.swift */,
 				B21154152602786E00B4F8D4 /* CoreDataManager.swift */,
+				B21153F1260268A000B4F8D4 /* CoreDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -192,7 +195,6 @@
 				B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */,
 				B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */,
 				B24D859825FF3C8600734FC1 /* Assembly.swift */,
-				B21153F1260268A000B4F8D4 /* CoreDataModel.xcdatamodeld */,
 				B21153D7260249AE00B4F8D4 /* InputAccessoryView.swift */,
 				B24D859725FF3C5F00734FC1 /* Modules */,
 				B21153C2260233EE00B4F8D4 /* Entities */,
@@ -201,6 +203,7 @@
 				B2DFAF7325FCB8E000B1E65D /* LaunchScreen.storyboard */,
 				B2DFAF7625FCB8E000B1E65D /* Info.plist */,
 				B211542226028C3C00B4F8D4 /* ConfigurableCell.swift */,
+				B2A2F95426038038004A51F7 /* UITableView + deselectSelectedRow.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				B24D85A025FF3FBE00734FC1 /* NoteEditorViewController.swift in Sources */,
 				B24D859925FF3C8600734FC1 /* Assembly.swift in Sources */,
 				B2DFAF6925FCB8DE00B1E65D /* AppDelegate.swift in Sources */,
+				B2A2F95526038038004A51F7 /* UITableView + deselectSelectedRow.swift in Sources */,
 				B24D858B25FF376400734FC1 /* NotesListPresenter.swift in Sources */,
 				B21154112602784000B4F8D4 /* NoteModel+CoreDataProperties.swift in Sources */,
 				B2DFAF6B25FCB8DE00B1E65D /* SceneDelegate.swift in Sources */,

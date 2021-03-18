@@ -13,53 +13,65 @@ protocol NoteEditorViewControllerDelegate: class {
 }
 
 protocol NoteEditorPresenterProtocol {
-  func addNote(with model: Note)
   func fetchData()
+  func update(with text: String)
 }
 
 final class NoteEditorPresenter: NoteEditorPresenterProtocol {
+  
+    weak var viewController: NoteEditorViewControllerDelegate?
+    var coreData: CoreDataManager
+    let identifire: String
+    
+    init(viewController: NoteEditorViewController, coreData: CoreDataManager, identifire: String) {
+      self.viewController = viewController
+      self.coreData = coreData
+      self.identifire = identifire
+    }
+    
   func fetchData() {
-    
-    
     let context = self.coreData.context
-    let entityDescription = NSEntityDescription.entity(forEntityName: "NoteModel", in: context)
-
     let request = NSFetchRequest<NoteModel>(entityName: "NoteModel")
-    let sort = NSSortDescriptor(key: "identifire", ascending: true)
-    request.sortDescriptors = [sort]
-    
-    
-    
-    
+    let predicate = NSPredicate(format: "identifire == %@", self.identifire)
+    request.predicate = predicate
     do {
       let note = try context.fetch(request)
       if let model = note.first {
         viewController?.setData(model: model)
       }
-      
-    } catch {
-        fatalError("Failed to fetch employees: \(error)")
+    } catch let error {
+      print(error)
     }
-
-    
-      
-    
   }
   
-  func addNote(with model: Note) {
-//    let note = NoteModel(model: model, context: coreData.context)
-//    coreData.saveContext()
+  func update(with text: String) {
+    let context = self.coreData.context
+    let request = NSFetchRequest<NoteModel>(entityName: "NoteModel")
+    let predicate = NSPredicate(format: "identifire == %@", self.identifire)
+    request.predicate = predicate
+    do {
+      let notes = try context.fetch(request)
+      let isNull = notes.count == 0
+      switch isNull {
+      case true:
+        if text == "" {
+          break
+        }
+        let model = Note(text: text, identifire: UUID().uuidString, date: Date.init())
+        _ = NoteModel(model: model, context: coreData.context)
+        coreData.saveContext()
+      case false:
+        guard let modelObject = notes.first else { return }
+        if text == modelObject.text { return }
+        modelObject.setValue(text, forKey: "text")
+        modelObject.setValue(Date.init(), forKey: "date")
+        if text == "" {
+          context.delete(modelObject)
+        }
+      }
+      coreData.saveContext()
+    } catch let error {
+      print(error)
+    }
   }
-  
-  
-  weak var viewController: NoteEditorViewControllerDelegate?
-  var coreData: CoreDataManager
-  let identifire: String
-  
-  init(viewController: NoteEditorViewController, coreData: CoreDataManager, identifire: String) {
-    self.viewController = viewController
-    self.coreData = coreData
-    self.identifire = identifire
-  }
-  
 }

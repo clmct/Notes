@@ -47,6 +47,12 @@ final class NotesListViewController: UIViewController {
     performFetch()
   }
   
+  override func viewWillAppear(_ animated: Bool)
+  {
+    super.viewWillAppear(animated)
+    self.tableView.deselectSelectedRow(animated: true)
+  }
+  
   func performFetch() {
     do {
       try
@@ -64,7 +70,7 @@ final class NotesListViewController: UIViewController {
   
   
   @objc func createNoteAction() {
-    tableView.reloadData()
+    presenter?.showAddNote()
   }
   
   func setupLayout() {

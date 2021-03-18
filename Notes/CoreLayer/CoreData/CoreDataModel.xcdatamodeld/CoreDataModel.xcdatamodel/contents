@@ -4,11 +4,6 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="identifire" attributeType="String"/>
         <attribute name="text" attributeType="String"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="identifire"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="NoteModel" positionX="-45" positionY="0" width="128" height="88"/>

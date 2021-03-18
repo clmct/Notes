@@ -10,6 +10,7 @@ import UIKit
 extension NoteEditorViewController: NoteEditorViewControllerDelegate {
   func setData(model: NoteModel) {
     self.textView.text = model.text
+    self.note = model
   }
 }
 
@@ -19,7 +20,7 @@ final class NoteEditorViewController: UIViewController {
   var textView: UITextView!
   var layoutManager: NSLayoutManager!
   var textStorage: NSTextStorage!
-  
+  var note: NoteModel!
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Note"
@@ -37,8 +38,9 @@ final class NoteEditorViewController: UIViewController {
   }
   
   deinit {
-    let note = Note(text: textView.text, identifire: "UUID().uuidString", date: Date.init())
-    presenter?.addNote(with: note)
+//    let notee = Note(text: textView.text, identifire: !, date: Date.init())
+//    presenter?.addNote(with: notee)
+    presenter?.update(with: self.textView.text)
   }
 
 }
@@ -88,9 +90,9 @@ private extension NoteEditorViewController {
   }
   
   func setupDefaultState() {
-    let text = "For a minute or two she stood looking at the house, and wondering what to do next, when suddenly a footma..."
-    let attributedString = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20.0)])
-    textStorage.setAttributedString(attributedString)
+//    let text = "For a minute or two she stood looking at the house, and wondering what to do next, when suddenly a footma..."
+//    let attributedString = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20.0)])
+//    textStorage.setAttributedString(attributedString)
   }
   
   func setupBackground() {

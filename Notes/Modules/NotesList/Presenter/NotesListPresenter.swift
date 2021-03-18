@@ -10,6 +10,7 @@ import CoreData
 
 protocol NotesListPresenterProtocol {
   func showNoteEditor(identifire: String)
+  func showAddNote()
   func getContext() -> NSManagedObjectContext
 }
 
@@ -25,13 +26,18 @@ final class NotesListPresenter: NotesListPresenterProtocol {
     self.router = router
     self.coreData = coreData
     
-    let note = Note(text: "tu", identifire: UUID().uuidString, date: Date.init())
-    let test = NoteModel(model: note, context: coreData.context)
-    coreData.saveContext()
+//    let note = Note(text: "tu", identifire: UUID().uuidString, date: Date.init())
+//    let test = NoteModel(model: note, context: coreData.context)
+//    coreData.saveContext()
   }
   
   func getContext() -> NSManagedObjectContext {
     return coreData.context
+  }
+  
+  func showAddNote() {
+    let newId = UUID().uuidString
+    router.showNoteEditor(identifire: newId)
   }
   
   func showNoteEditor(identifire: String) {

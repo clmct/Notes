@@ -7,15 +7,16 @@
 
 import Foundation
 import CoreData
+
 protocol CoreDataManagerProtocol {
   var context: NSManagedObjectContext { get set }
-  func saveContext ()
+  func saveContext()
 }
 
 final class CoreDataManager: CoreDataManagerProtocol {
   
   init() {
-    self.context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+    self.context.mergePolicy = NSOverwriteMergePolicy
   }
   
   lazy var persistentContainer: NSPersistentContainer = {
@@ -34,10 +35,8 @@ final class CoreDataManager: CoreDataManagerProtocol {
         if context.hasChanges {
             do {
                 try context.save()
-            } catch {
-//              context.rollback()
-                let nserror = error as NSError
-//                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            } catch let error {
+              print(error)
             }
         }
     }

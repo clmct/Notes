@@ -11,6 +11,28 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
   func configure(with model: ConversationModel) {
     self.titleLabel.text = model.text
     self.descriptionLabel.text = model.identifire
+    
+    if let date = model.date {
+      
+      let today = Date.init()
+      let formatterToday = DateFormatter()
+      formatterToday.dateFormat = "MM.dd.yyyy"
+      let todayString = formatterToday.string(from: today)
+      
+      
+      let formatter = DateFormatter()
+      formatter.dateFormat = "MM.dd.yyyy HH:mm"
+      let dateString = formatter.string(from: date)
+      
+      let dateComponent =  dateString.split(separator: " ")
+      
+      if todayString == dateComponent[0] {
+        self.dateLabel.text = String(dateComponent[1])
+      } else {
+        self.dateLabel.text = String(dateComponent[0])
+      }
+      
+    }
   }
   
   typealias ConversationModel = NoteModel
@@ -33,8 +55,17 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
     description.numberOfLines = 1
     description.font = .systemFont(ofSize: 16)
     description.textColor = .lightGray
-    
     return description
+  }()
+  
+  lazy var dateLabel: UILabel = {
+    let date = UILabel()
+    date.translatesAutoresizingMaskIntoConstraints = false
+    date.text = "12:23"
+    date.numberOfLines = 1
+    date.font = .systemFont(ofSize: 16)
+    date.textColor = .lightGray
+    return date
   }()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -50,6 +81,7 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
   func addSubviews() {
     contentView.addSubview(titleLabel)
     contentView.addSubview(descriptionLabel)
+    contentView.addSubview(dateLabel)
   }
   
   func setupLayout() {
@@ -60,7 +92,14 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
     ])
     
     NSLayoutConstraint.activate([
-      descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+//      dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+      dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+      dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+    ])
+    
+    NSLayoutConstraint.activate([
+      descriptionLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 5),
       descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
       descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
       descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
