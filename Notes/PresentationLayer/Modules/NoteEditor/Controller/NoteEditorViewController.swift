@@ -95,7 +95,7 @@ private extension NoteEditorViewController {
   }
   
   func setupDefaultState() {
-    let text = "e"
+    let text = ""
     let attributedString = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20.0)])
     textStorage.setAttributedString(attributedString)
   }

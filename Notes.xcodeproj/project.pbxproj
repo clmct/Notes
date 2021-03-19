@@ -29,7 +29,6 @@
 		B2DFAF6925FCB8DE00B1E65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */; };
 		B2DFAF6B25FCB8DE00B1E65D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */; };
 		B2DFAF6D25FCB8DE00B1E65D /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFAF6C25FCB8DE00B1E65D /* NotesListViewController.swift */; };
-		B2DFAF7025FCB8DE00B1E65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DFAF6E25FCB8DE00B1E65D /* Main.storyboard */; };
 		B2DFAF7225FCB8E000B1E65D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DFAF7125FCB8E000B1E65D /* Assets.xcassets */; };
 		B2DFAF7525FCB8E000B1E65D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DFAF7325FCB8E000B1E65D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -58,7 +57,6 @@
 		B2DFAF6825FCB8DE00B1E65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2DFAF6A25FCB8DE00B1E65D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B2DFAF6C25FCB8DE00B1E65D /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
-		B2DFAF6F25FCB8DE00B1E65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2DFAF7125FCB8E000B1E65D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2DFAF7425FCB8E000B1E65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2DFAF7625FCB8E000B1E65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,9 +92,7 @@
 		B211540B2602780E00B4F8D4 /* CoreDataStack */ = {
 			isa = PBXGroup;
 			children = (
-				B211540C2602783300B4F8D4 /* NoteModel+CoreDataClass.swift */,
-				B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */,
-				B21154192602888300B4F8D4 /* NoteModel+init.swift */,
+				B263B73F2604C35200582E3D /* CoreDataEntites */,
 				B21154152602786E00B4F8D4 /* CoreDatasStack.swift */,
 				B21153F1260268A000B4F8D4 /* CoreDataModel.xcdatamodeld */,
 			);
@@ -200,6 +196,7 @@
 		B263B71B2604936400582E3D /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				B263B726260494E100582E3D /* Protocols */,
 				B263B7322604B86200582E3D /* Router */,
 				B263B71D2604938200582E3D /* Assembly */,
 				B24D859725FF3C5F00734FC1 /* Modules */,
@@ -273,6 +270,16 @@
 			path = LifeCycle;
 			sourceTree = "<group>";
 		};
+		B263B73F2604C35200582E3D /* CoreDataEntites */ = {
+			isa = PBXGroup;
+			children = (
+				B211540C2602783300B4F8D4 /* NoteModel+CoreDataClass.swift */,
+				B21154102602784000B4F8D4 /* NoteModel+CoreDataProperties.swift */,
+				B21154192602888300B4F8D4 /* NoteModel+init.swift */,
+			);
+			path = CoreDataEntites;
+			sourceTree = "<group>";
+		};
 		B2A2F959260384CC004A51F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,13 +312,11 @@
 				B263B71C2604936D00582E3D /* ServiceLayer */,
 				B263B719260492F700582E3D /* CoreLayer */,
 				B263B7352604C1AD00582E3D /* LifeCycle */,
-				B2DFAF6E25FCB8DE00B1E65D /* Main.storyboard */,
+				B21153C2260233EE00B4F8D4 /* Entities */,
+				B263B727260494E900582E3D /* Extensions */,
 				B2DFAF7125FCB8E000B1E65D /* Assets.xcassets */,
 				B2DFAF7625FCB8E000B1E65D /* Info.plist */,
 				B2DFAF7325FCB8E000B1E65D /* LaunchScreen.storyboard */,
-				B21153C2260233EE00B4F8D4 /* Entities */,
-				B263B726260494E100582E3D /* Protocols */,
-				B263B727260494E900582E3D /* Extensions */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -375,7 +380,6 @@
 			files = (
 				B2DFAF7525FCB8E000B1E65D /* LaunchScreen.storyboard in Resources */,
 				B2DFAF7225FCB8E000B1E65D /* Assets.xcassets in Resources */,
-				B2DFAF7025FCB8DE00B1E65D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,14 +418,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B2DFAF6E25FCB8DE00B1E65D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2DFAF6F25FCB8DE00B1E65D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B2DFAF7325FCB8E000B1E65D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
