@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
+extension NoteCell: ConfigurableCellProtocol {
   func configure(with model: ConversationModel) {
     
 //    let textComponents = model.text?.components(separatedBy: "\n")
@@ -39,6 +39,9 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
       
     }
   }
+}
+
+final class NoteCell: UITableViewCell {
   
   typealias ConversationModel = NoteModel
   
@@ -47,7 +50,6 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
   lazy var titleLabel: UILabel = {
     let title = UILabel()
     title.translatesAutoresizingMaskIntoConstraints = false
-    title.text = "Как я писал приложение заметки для поступления в ЦФТ"
     title.numberOfLines = 1
     title.font = .boldSystemFont(ofSize: 18)
     return title
@@ -56,7 +58,6 @@ final class NoteCell: UITableViewCell, ConfigurableCellProtocol {
   lazy var descriptionLabel: UILabel = {
     let description = UILabel()
     description.translatesAutoresizingMaskIntoConstraints = false
-    description.text = "Я выбрал архитектуру MVP. Core Data. iOS 13+"
     description.numberOfLines = 1
     description.font = .systemFont(ofSize: 16)
     description.textColor = .lightGray

@@ -40,41 +40,36 @@ final class NotesListViewController: UIViewController {
     super.viewDidLoad()
     self.title = "Notes"
     setupLayout()
+    setupTableView()
+    performFetch()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.tableView.deselectSelectedRow(animated: true)
+  }
+}
+
+private extension NotesListViewController {
+  
+  func setupTableView() {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.identifire)
-    setupButton()
-    performFetch()
-    
-  }
-  
-  override func viewWillAppear(_ animated: Bool)
-  {
-    super.viewWillAppear(animated)
-    self.tableView.deselectSelectedRow(animated: true)
   }
   
   func performFetch() {
     do {
       try
-      fetchedResultsController.performFetch()
-        tableView.reloadData()
-    } catch {
-      fatalError()
+        fetchedResultsController.performFetch()
+      tableView.reloadData()
+    } catch let error {
+      print(error.localizedDescription)
     }
   }
   
-  func setupButton() {
-    let createNote = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(createNoteAction))
-    self.navigationItem.rightBarButtonItem = createNote
-  }
-  
-  
-  @objc func createNoteAction() {
-    presenter?.showAddNote()
-  }
-  
   func setupLayout() {
+    setupButton()
     self.view.addSubview(tableView)
     NSLayoutConstraint.activate([
       tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -83,52 +78,16 @@ final class NotesListViewController: UIViewController {
       tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
     ])
   }
-}
-
-
-extension NotesListViewController: NSFetchedResultsControllerDelegate {
   
-  
-  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    print("\(#function)")
-    self.tableView.beginUpdates()
+  @objc func createNoteAction() {
+    presenter?.showAddNote()
   }
   
-  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    print("\(#function)")
-    self.tableView.endUpdates()
-  }
-  
-  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                  didChange anObject: Any,
-                  at indexPath: IndexPath?,
-                  for type: NSFetchedResultsChangeType,
-                  newIndexPath: IndexPath?) {
-    
-    switch type {
-    case .insert:
-      guard let newIndexPath = newIndexPath else { return }
-      tableView.insertRows(at: [newIndexPath], with: .automatic)
-    case .move:
-      guard let newIndexPath = newIndexPath, let indexPath = indexPath else { return }
-      tableView.deleteRows(at: [indexPath], with: .automatic)
-      tableView.insertRows(at: [newIndexPath], with: .automatic)
-    case .update:
-      guard let indexPath = indexPath else { return }
-      if let cell = tableView.cellForRow(at: indexPath) as? NoteCell {
-        guard let note = controller.object(at: indexPath) as? NoteModel else { return }
-        cell.configure(with: note)
-      }
-      tableView.reloadRows(at: [indexPath], with: .automatic)
-    case .delete:
-      guard let indexPath = indexPath else { return }
-      tableView.deleteRows(at: [indexPath], with: .automatic)
-    default:
-      print("switch type is defuailt")
-    }
+  func setupButton() {
+    let createNote = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(createNoteAction))
+    self.navigationItem.rightBarButtonItem = createNote
   }
 }
-
 
 extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
   
@@ -159,5 +118,45 @@ extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let identifire = fetchedResultsController.object(at: indexPath).identifire else { return }
       presenter?.showNoteEditor(identifire: identifire)
+  }
+}
+
+extension NotesListViewController: NSFetchedResultsControllerDelegate {
+  
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    self.tableView.beginUpdates()
+  }
+  
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    self.tableView.endUpdates()
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                  didChange anObject: Any,
+                  at indexPath: IndexPath?,
+                  for type: NSFetchedResultsChangeType,
+                  newIndexPath: IndexPath?) {
+    
+    switch type {
+    case .insert:
+      guard let newIndexPath = newIndexPath else { return }
+      tableView.insertRows(at: [newIndexPath], with: .automatic)
+    case .move:
+      guard let newIndexPath = newIndexPath, let indexPath = indexPath else { return }
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      tableView.insertRows(at: [newIndexPath], with: .automatic)
+    case .update:
+      guard let indexPath = indexPath else { return }
+      if let cell = tableView.cellForRow(at: indexPath) as? NoteCell {
+        guard let note = controller.object(at: indexPath) as? NoteModel else { return }
+        cell.configure(with: note)
+      }
+      tableView.reloadRows(at: [indexPath], with: .automatic)
+    case .delete:
+      guard let indexPath = indexPath else { return }
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    default:
+      print("switch type is defuailt")
+    }
   }
 }

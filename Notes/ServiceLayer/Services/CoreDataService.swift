@@ -20,6 +20,9 @@ final class CoreDataService: CoreDataServiceProtocol {
   
   init(coreDatasStack: CoreDatasStackProtocol) {
     self.coreDatasStack = coreDatasStack
+    #if DEBUG
+    setupNotes()
+    #endif
   }
   
   func getContext() -> NSManagedObjectContext {
@@ -34,7 +37,6 @@ final class CoreDataService: CoreDataServiceProtocol {
     do {
       let note = try context.fetch(request)
       if let model = note.first {
-//        viewController?.setData(model: model)
         completion(model)
       }
     } catch let error {
@@ -72,4 +74,27 @@ final class CoreDataService: CoreDataServiceProtocol {
       print(error)
     }
   }
+}
+
+// MARK: Debug mode setup
+extension CoreDataService {
+  
+  func isAppAlreadyLaunchedOnce()-> Bool {
+    let defaults = UserDefaults.standard
+    if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil {
+      return true
+    } else {
+      defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+      return false
+    }
+  }
+  
+  func setupNotes() {
+    if isAppAlreadyLaunchedOnce() == false {
+      let model = Note(text: "Тестовая заметка", identifire: UUID().uuidString, date: Date.init())
+      _ = NoteModel(model: model, context: self.coreDatasStack.context)
+      coreDatasStack.saveContext()
+    }
+  }
+  
 }

@@ -18,7 +18,6 @@ final class NotesListPresenter: NotesListPresenterProtocol {
   
   weak var viewController: NotesListViewController?
   var router: RouterProtocol
-//  var notes = [Note]()
   var coreDataService: CoreDataServiceProtocol
   
   init(viewController: NotesListViewController, router: RouterProtocol, coreDataService: CoreDataServiceProtocol) {
