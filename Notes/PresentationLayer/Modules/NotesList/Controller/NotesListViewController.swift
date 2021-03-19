@@ -25,9 +25,9 @@ final class NotesListViewController: UIViewController {
     fetchRequest.sortDescriptors = [sort1]
     
     let fetchedResultsController = NSFetchedResultsController(
-              fetchRequest: fetchRequest,
+      fetchRequest: fetchRequest,
       managedObjectContext: self.presenter!.getContext(),
-        sectionNameKeyPath: nil,
+      sectionNameKeyPath: nil,
       cacheName: nil)
     
     fetchedResultsController.delegate = self
@@ -117,7 +117,7 @@ extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let identifire = fetchedResultsController.object(at: indexPath).identifire else { return }
-      presenter?.showNoteEditor(identifire: identifire)
+    presenter?.showNoteEditor(identifire: identifire)
   }
 }
 

@@ -10,12 +10,8 @@ import UIKit
 extension NoteCell: ConfigurableCellProtocol {
   func configure(with model: ConversationModel) {
     
-//    let textComponents = model.text?.components(separatedBy: "\n")
-//    let titleComponent: String = textComponents?[0] ?? ""
-//    let descriptionComponent: String = textComponents?.count =>2 ?  "  " :  textComponents?[1]
-    
     self.titleLabel.text = model.text
-    self.descriptionLabel.text = model.identifire
+//    self.descriptionLabel.text = model.text
     
     if let date = model.date {
       

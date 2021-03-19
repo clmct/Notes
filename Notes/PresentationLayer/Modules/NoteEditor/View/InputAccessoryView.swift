@@ -11,7 +11,6 @@ class InputAccessoryView: UIView {
   
   var toolbar: UIToolbar!
   var completionButtonKeyboard: (() -> ())?
-  var completion: AttributeCompletion?
   
   override func didMoveToWindow() {
     super.didMoveToWindow()
@@ -61,21 +60,15 @@ extension InputAccessoryView {
   
   // Actions
   @objc func boldAction() {
-//    textStorage.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: textView.selectedRange )
-//    completion
   }
   @objc func italicAction() {
-//    textStorage.addAttribute(.font, value: UIFont.italicSystemFont(ofSize: 20), range: textView.selectedRange )
   }
   @objc func highlighterAction() {
     
   }
   @objc func clearAction() {
-//    textStorage.addAttribute(.font, value: UIFont.italicSystemFont(ofSize: 20), range: textView.selectedRange )
   }
   @IBAction func doneAction() {
     self.completionButtonKeyboard!()
-//    self.textView.resignFirstResponder()
-//    self.view.endEditing(true)
   }
 }
