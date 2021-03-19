@@ -9,9 +9,10 @@ import UIKit
 
 class InputAccessoryView: UIView {
   
-  public var toolbar: UIToolbar!
+  var toolbar: UIToolbar!
   var completionButtonKeyboard: (() -> ())?
   var completion: AttributeCompletion?
+  
   override func didMoveToWindow() {
     super.didMoveToWindow()
     if let window = self.window {

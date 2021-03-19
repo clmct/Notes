@@ -1,5 +1,5 @@
 //
-//  CoreDataStack.swift
+//  CoreDatasStack.swift
 //  Notes
 //
 //  Created by Алмат Кульбаев on 18.03.2021.
@@ -8,12 +8,12 @@
 import Foundation
 import CoreData
 
-protocol CoreDataManagerProtocol {
+protocol CoreDatasStackProtocol {
   var context: NSManagedObjectContext { get set }
   func saveContext()
 }
 
-final class CoreDataManager: CoreDataManagerProtocol {
+final class CoreDataStack: CoreDatasStackProtocol {
   
   init() {
     self.context.mergePolicy = NSOverwriteMergePolicy

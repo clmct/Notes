@@ -17,22 +17,18 @@ protocol NotesListPresenterProtocol {
 final class NotesListPresenter: NotesListPresenterProtocol {
   
   weak var viewController: NotesListViewController?
-  var router: MainRouterProtocol
-  var notes = [Note]()
-  var coreData: CoreDataManager
+  var router: RouterProtocol
+//  var notes = [Note]()
+  var coreDataService: CoreDataServiceProtocol
   
-  init(viewController: NotesListViewController, router: MainRouterProtocol, coreData: CoreDataManager) {
+  init(viewController: NotesListViewController, router: RouterProtocol, coreDataService: CoreDataServiceProtocol) {
     self.viewController = viewController
     self.router = router
-    self.coreData = coreData
-    
-//    let note = Note(text: "tu", identifire: UUID().uuidString, date: Date.init())
-//    let test = NoteModel(model: note, context: coreData.context)
-//    coreData.saveContext()
+    self.coreDataService = coreDataService
   }
   
   func getContext() -> NSManagedObjectContext {
-    return coreData.context
+    return self.coreDataService.getContext()
   }
   
   func showAddNote() {

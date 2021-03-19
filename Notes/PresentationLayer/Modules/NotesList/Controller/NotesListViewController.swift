@@ -138,7 +138,8 @@ extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
       presenter?.getContext().delete(note)
       do {
         try presenter?.getContext().save()
-      } catch {
+      } catch let error {
+        print(error.localizedDescription)
       }
     }
   }
